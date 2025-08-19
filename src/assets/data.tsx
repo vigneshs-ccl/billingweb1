@@ -12,11 +12,11 @@ export interface Customer {
   gst?: string;
 }
 
-// Get saved customers
-const customers: Customer[] =
-  JSON.parse(localStorage.getItem("customers") || "[]") || [];
+// // Get saved customers
+// const customers: Customer[] =
+//   JSON.parse(localStorage.getItem("customers") || "[]") || [];
 
-// Add the action buttons dynamically to each customer
-export const data: Customer[] = customers.map((customer) => ({
-  ...customer,
-}));
+// // Add the action buttons dynamically to each customer
+// export const data: Customer[] = customers.map((customer) => ({
+//   ...customer,
+// }));

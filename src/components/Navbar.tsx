@@ -1,9 +1,9 @@
 import React from "react";
 import { FaBars } from "react-icons/fa";
 import { CgProfile } from "react-icons/cg";
-const Navbar:React.FC = () => {
+const Navbar: React.FC = () => {
   return (
-    <nav className="px-19 py-3 fixed flex justify-between bg-[#f5f5f5] ml-64 h-18 w-full shadow-sm">
+    <nav className="px-19 py-3 fixed flex justify-between bg-[#f5f5f5] ml-64 h-18 w-full shadow-sm z-1">
       <div className="flex items-center text-xl">
         <FaBars className="text-black me-4 cursor-pointer" />
       </div>

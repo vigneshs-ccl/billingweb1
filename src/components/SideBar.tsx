@@ -1,6 +1,7 @@
 import React from "react";
 import { FaHome, FaUsers } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
+import { FaMoneyCheckAlt } from "react-icons/fa";
 
 const SideBar:React.FC = () => {
   return (
@@ -44,6 +45,23 @@ const SideBar:React.FC = () => {
           >
             <FaUsers className="w-6 h-6 mr-2 ml-4" />
             Customers
+          </NavLink>
+        </li>
+
+        {/* Sales */}
+        <li className="mb-2 rounded hover:shadow">
+          <NavLink
+            to="/sales"
+            className={({ isActive }) =>
+              `flex items-center w-full py-4 px-3 ${
+                isActive
+                  ? "bg-[#006666] text-white"
+                  : "hover:bg-[#FE6A49] hover:text-white"
+              }`
+            }
+          >
+            <FaMoneyCheckAlt className="w-6 h-6 mr-2 ml-4"/>
+            Sales
           </NavLink>
         </li>
       </ul>

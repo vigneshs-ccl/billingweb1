@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useFormik } from "formik";
-import { validateSchema } from "../schemas";
+import { validateSchema } from "../../schemas";
 import { useNavigate, useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
 

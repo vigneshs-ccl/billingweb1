@@ -13,7 +13,6 @@ interface Customer {
   country: string;
   postal: string;
   gst: string;
-  [key: string]: any; // allows flexibility for extra fields
 }
 
 const ViewCustomer: React.FC = () => {

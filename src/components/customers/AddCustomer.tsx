@@ -63,33 +63,35 @@ const AddCustomer: React.FC = () => {
     }
   };
 
-  const renderActions = (customer: Customer): JSX.Element => (
-    <div className="flex justify-evenly items-center w-full text-2xl">
-      <button
-        onClick={() =>
-          navigate(`/customer/view/${customer.id}`, { state: { customer } })
-        }
-        className="mr-4 text-blue-500"
-        title="View"
-      >
-        <FaEye />
-      </button>
-      <button
-        onClick={() => navigate(`/customer/create`, { state: { customer } })}
-        className="mr-4 text-green-500"
-        title="Edit"
-      >
-        <FaEdit />
-      </button>
-      <button
-        onClick={() => handleDelete(customer.id)}
-        className="text-red-500"
-        title="Delete"
-      >
-        <MdDelete />
-      </button>
-    </div>
-  );
+  const renderActions = (customer: Customer): JSX.Element => {
+    return (
+      <div className="flex justify-evenly items-center w-full text-2xl">
+        <button
+          onClick={() =>
+            navigate(`/customer/view/${customer.id}`, { state: { customer } })
+          }
+          className="mr-4 text-blue-500"
+          title="View"
+        >
+          <FaEye />
+        </button>
+        <button
+          onClick={() => navigate(`/customer/create`, { state: { customer } })}
+          className="mr-4 text-green-500"
+          title="Edit"
+        >
+          <FaEdit />
+        </button>
+        <button
+          onClick={() => handleDelete(customer.id)}
+          className="text-red-500"
+          title="Delete"
+        >
+          <MdDelete />
+        </button>
+      </div>
+    );
+  };
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value.toLowerCase();
