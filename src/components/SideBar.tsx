@@ -9,9 +9,8 @@ const SideBar:React.FC = () => {
       <div className="flex h-18 justify-center items-center">
         <img src="./img.jpg" alt="Logo" />
       </div>
-
       <hr className="text-gray-400" />
-
+      
       <ul className="font-bold">
         {/* Dashboard */}
         <li className="mb-2 rounded hover:shadow">

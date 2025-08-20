@@ -5,7 +5,7 @@ import BranchSelect from "./BranchSelect";
 import type { Customer } from "../../assets/customer";
 import { MdDeleteOutline } from "react-icons/md";
 import { v4 as uuidv4 } from "uuid";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 interface Branch {
   branchName: string;
@@ -35,7 +35,10 @@ interface SaleFormValues {
   items: SaleItem[];
 }
 
-const SaleForm = () => {
+const SaleForm: React.FC = () => {
+  const location = useLocation();
+  const editData: SaleFormValues = location.state?.sales || null;
+
   const [checked, setChecked] = useState(false);
   const navigate = useNavigate();
   const formik = useFormik<SaleFormValues>({
@@ -53,14 +56,26 @@ const SaleForm = () => {
         { productId: "", quantity: 0, price: 0, description: "" }, // start with one item
       ],
     },
+    enableReinitialize: true,
     onSubmit: (values) => {
       const storedSales: SaleFormValues[] =
         JSON.parse(localStorage.getItem("salesData") || "[]") || [];
 
-      localStorage.setItem(
-        "salesData",
-        JSON.stringify([...storedSales, { ...values, id: uuidv4() }])
-      );
+      if (editData) {
+        const updated = storedSales.map((s) =>
+          s.customerID === editData.customerID
+            ? { ...values, id: editData.customerID }
+            : s
+        );
+
+        localStorage.setItem("salesData", JSON.stringify(updated));
+      } else {
+        localStorage.setItem(
+          "salesData",
+          JSON.stringify([...storedSales, { ...values, id: uuidv4() }])
+        );
+      }
+
       console.log("Form submitted:", values);
       navigate("/sales");
     },

@@ -4,23 +4,9 @@ import { FaEye, FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { useNavigate } from "react-router-dom";
 import DataTable from "react-data-table-component";
-
+import type{Customer} from "../../assets/data"
 import type { TableColumn } from "react-data-table-component";
 
-interface Customer {
-  id: string;
-  type: string;
-  name: string;
-  phone: string;
-  email: string;
-  add1?: string;
-  city?: string;
-  state?: string;
-  country?: string;
-  postal?: string;
-  gst?: string;
-  action?: JSX.Element;
-}
 
 const customStyles = {
   headCells: {
@@ -43,8 +29,7 @@ const AddCustomer: React.FC = () => {
 
     setRecords(
       storedCustomers.map((customer) => ({
-        ...customer,
-        action: renderActions(customer),
+        ...customer
       }))
     );
   };
@@ -63,35 +48,35 @@ const AddCustomer: React.FC = () => {
     }
   };
 
-  const renderActions = (customer: Customer): JSX.Element => {
-    return (
-      <div className="flex justify-evenly items-center w-full text-2xl">
+  const renderActions = (customer: Customer) => 
+    (
+      <div className="flex items-center w-full text-2xl">
         <button
           onClick={() =>
             navigate(`/customer/view/${customer.id}`, { state: { customer } })
           }
-          className="mr-4 text-blue-500"
+          className="mr-4 text-blue-500 cursor-pointer"
           title="View"
         >
           <FaEye />
         </button>
         <button
           onClick={() => navigate(`/customer/create`, { state: { customer } })}
-          className="mr-4 text-green-500"
+          className="mr-4 text-green-500 cursor-pointer"
           title="Edit"
         >
           <FaEdit />
         </button>
         <button
           onClick={() => handleDelete(customer.id)}
-          className="text-red-500"
+          className="text-red-500 cursor-pointer"
           title="Delete"
         >
           <MdDelete />
         </button>
       </div>
     );
-  };
+  
 
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value.toLowerCase();
@@ -115,7 +100,7 @@ const AddCustomer: React.FC = () => {
     { name: "Type", selector: (row) => row.type, sortable: true },
     { name: "Email", selector: (row) => row.email, sortable: true },
     { name: "Phone", selector: (row) => row.phone, sortable: true },
-    { name: "Action", selector: (row) => row.action },
+    { name: "Action", cell: (row) => renderActions(row),},
   ];
 
   return (
@@ -127,7 +112,7 @@ const AddCustomer: React.FC = () => {
           className="h-10 bg-[#006666] text-white flex justify-center items-center px-6 py-4 rounded-lg"
         >
           <MdAddCircleOutline size={20} />
-          <span className="text-[0.90rem] font-semibold ml-2">
+          <span className="text-[0.90rem] font-semibold ml-2 cursor-pointer">
             Add New Customer
           </span>
         </button>

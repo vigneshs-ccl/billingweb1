@@ -3,23 +3,7 @@ import { useFormik } from "formik";
 import { validateSchema } from "../../schemas";
 import { useNavigate, useLocation } from "react-router-dom";
 import { v4 as uuidv4 } from "uuid";
-
-interface Customer {
-  id: string;
-  type: string;
-  name: string;
-  phone: string;
-  email: string;
-  sort: string;
-  type1: string;
-  add1: string;
-  add2: string;
-  city: string;
-  state: string;
-  country: string;
-  postal: string;
-  gst: string;
-}
+import type { Customer } from "../../assets/customer";
 
 const CustomerForm: React.FC = () => {
   const navigate = useNavigate();

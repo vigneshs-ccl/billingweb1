@@ -23,7 +23,9 @@ const App: React.FC = () => {
           <Route path="sales" element={<AddSales />} />
           <Route path="sale/create" element={<SaleForm />} />
           <Route path="sale/view/:id" element={<ViewSales/>}/>
+          <Route path="sale/create/:id" element={<SaleForm/>}/>
         </Route>
+
       </Routes>
     </Router>
   );
